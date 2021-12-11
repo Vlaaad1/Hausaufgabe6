@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GUI_Controller">
+   <children>
+      <TextField fx:id="studentLastName" layoutX="184.0" layoutY="73.0" promptText="Last Name" />
+      <TextField fx:id="studentTotalCredits" layoutX="184.0" layoutY="150.0" promptText="Total Credits" />
+      <TextField fx:id="studentCourseID" layoutX="184.0" layoutY="188.0" promptText="Course ID" />
+      <TextField fx:id="studentFirstName" layoutX="184.0" layoutY="34.0" promptText="First Name" />
+      <TextField fx:id="studentID" layoutX="184.0" layoutY="109.0" promptText="Student ID" />
+      <Button defaultButton="true" layoutX="107.0" layoutY="295.0" mnemonicParsing="false" onAction="#saveForMenuStudent" text="Save">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button defaultButton="true" layoutX="259.0" layoutY="295.0" mnemonicParsing="false" onAction="#registerForMenuStudent" text="Register" />
+      <Button defaultButton="true" layoutX="426.0" layoutY="295.0" mnemonicParsing="false" onAction="#showStudentCredits" text="Show Credits" />
+      <Label fx:id="totalCreditsLabel" layoutX="411.0" layoutY="101.0" prefHeight="17.0" prefWidth="124.0" text="Number of credits" />
+      <Button layoutX="259.0" layoutY="349.0" mnemonicParsing="false" onAction="#clearForMenuStudent" text="Clear" />
+   </children>
+</AnchorPane>
