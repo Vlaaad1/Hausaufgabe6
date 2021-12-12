@@ -185,6 +185,10 @@ public record Controller(CourseJDBC_Repository courseRepo, StudentJDBC_Repositor
         return (ArrayList<Student>) studentsList.stream().filter(byCredits).collect(Collectors.toList());
     }
 
+    /**
+     * this method is used to find students depending on the teacher's ID
+     * @return a list of students who are thought by that specified teacher
+     */
     public ArrayList<Student> findStudentsByTeacherID(int teacherID) throws IOException{
         ArrayList<Course> courses = (ArrayList<Course>) this.courseRepo.findAll();
         ArrayList<Course> foundWithId = new ArrayList<>();
@@ -202,6 +206,10 @@ public record Controller(CourseJDBC_Repository courseRepo, StudentJDBC_Repositor
         return students;
     }
 
+    /**
+     * this method is used to find students who are registered to a certain course
+     * @return a list of students who are enrolled to a course
+     */
     public ArrayList<Student> findStudentsByCourseID(int courseID) throws IOException{
         ArrayList<Integer> studentIDs = this.enrolledRepo.findStudentsByCourseID(courseID);
         ArrayList<Student> studentList = (ArrayList<Student>) this.studentRepo.findAll();

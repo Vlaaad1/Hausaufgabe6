@@ -2,12 +2,19 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="370.0" prefWidth="469.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GUI_Controller">
+<VBox alignment="CENTER" prefHeight="486.0" prefWidth="469.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GUI_Controller">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
+   <Label alignment="CENTER" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" prefHeight="64.0" prefWidth="232.0" text="Please select one of the buttons below" textAlignment="JUSTIFY" textFill="#121212" underline="true" wrapText="true">
+      <font>
+         <Font name="Ebrima" size="13.0" />
+      </font>
+   </Label>
    <Button defaultButton="true" mnemonicParsing="false" onAction="#onStudentMenuButtonClick" prefHeight="74.0" prefWidth="159.0" text="Student Menu" textAlignment="JUSTIFY" />
    <Button alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#onTeacherMenuButtonClick" prefHeight="75.0" prefWidth="163.0" text="Teacher Menu" />
 </VBox>

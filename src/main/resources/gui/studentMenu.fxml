@@ -5,22 +5,26 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GUI_Controller">
+<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GUI_Controller">
    <children>
-      <TextField fx:id="studentLastName" layoutX="184.0" layoutY="73.0" promptText="Last Name" />
-      <TextField fx:id="studentTotalCredits" layoutX="184.0" layoutY="150.0" promptText="Total Credits" />
-      <TextField fx:id="studentCourseID" layoutX="184.0" layoutY="188.0" promptText="Course ID" />
-      <TextField fx:id="studentFirstName" layoutX="184.0" layoutY="34.0" promptText="First Name" />
-      <TextField fx:id="studentID" layoutX="184.0" layoutY="109.0" promptText="Student ID" />
-      <Button defaultButton="true" layoutX="107.0" layoutY="295.0" mnemonicParsing="false" onAction="#saveForMenuStudent" text="Save">
+      <TextField fx:id="studentLastName" layoutX="300.0" layoutY="90.0" promptText="Last Name" />
+      <TextField fx:id="studentTotalCredits" layoutX="300.0" layoutY="170.0" promptText="Total Credits" />
+      <TextField fx:id="studentCourseID" layoutX="300.0" layoutY="210.0" promptText="Course ID" />
+      <TextField fx:id="studentFirstName" layoutX="300.0" layoutY="50.0" promptText="First Name" />
+      <TextField fx:id="studentID" layoutX="300.0" layoutY="130.0" promptText="Student ID" />
+      <Button defaultButton="true" layoutX="220.0" layoutY="270.0" mnemonicParsing="false" onAction="#saveForMenuStudent" prefHeight="25.0" prefWidth="75.0" text="Save">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button defaultButton="true" layoutX="259.0" layoutY="295.0" mnemonicParsing="false" onAction="#registerForMenuStudent" text="Register" />
-      <Button defaultButton="true" layoutX="426.0" layoutY="295.0" mnemonicParsing="false" onAction="#showStudentCredits" text="Show Credits" />
-      <Label fx:id="totalCreditsLabel" layoutX="411.0" layoutY="101.0" prefHeight="17.0" prefWidth="124.0" text="Number of credits" />
-      <Button layoutX="259.0" layoutY="349.0" mnemonicParsing="false" onAction="#clearForMenuStudent" text="Clear" />
+      <Button defaultButton="true" layoutX="340.0" layoutY="270.0" mnemonicParsing="false" onAction="#registerForMenuStudent" prefHeight="25.0" prefWidth="75.0" text="Register" />
+      <Button defaultButton="true" layoutX="460.0" layoutY="270.0" mnemonicParsing="false" onAction="#showStudentCredits" text="Show Credits" />
+      <Label fx:id="totalCreditsLabel" layoutX="500.0" layoutY="170.0" prefHeight="25.0" prefWidth="124.0" text="Number of credits">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Button layoutX="340.0" layoutY="350.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#clearForMenuStudent" prefHeight="33.0" prefWidth="75.0" text="Clear" />
    </children>
 </AnchorPane>
