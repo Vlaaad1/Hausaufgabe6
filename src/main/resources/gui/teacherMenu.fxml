@@ -5,18 +5,19 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane onDragDetected="#showStudents" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GUI_Controller">
+<AnchorPane accessibleRole="TEXT_FIELD" onDragDetected="#showStudents" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GUI_Controller">
    <children>
-      <TextField fx:id="teacherFirstName" layoutX="150.0" layoutY="65.0" promptText="First Name" />
-      <TextField fx:id="teacherLastName" layoutX="150.0" layoutY="115.0" promptText="Last Name" />
-      <TextField fx:id="teacherID" layoutX="150.0" layoutY="165.0" promptText="Teacher ID" />
-      <Button layoutX="200.0" layoutY="297.0" mnemonicParsing="false" onAction="#saveForMenuTeacher" prefHeight="25.0" prefWidth="70.0" text="Save" />
-      <Button layoutX="330.0" layoutY="297.0" mnemonicParsing="false" onAction="#showStudents" prefHeight="25.0" prefWidth="95.0" text="Show Students" />
-      <ListView fx:id="myListView" layoutX="400.0" layoutY="65.0" prefHeight="200.0" prefWidth="200.0" />
-      <Label layoutX="400.0" layoutY="25.0" prefHeight="25.0" prefWidth="135.0" text="List of Students:" />
-      <TextField fx:id="teacherCourseID" layoutX="150.0" layoutY="215.0" promptText="Course ID" />
-      <Button layoutX="500.0" layoutY="297.0" mnemonicParsing="false" onAction="#refresh" prefHeight="25.0" prefWidth="70.0" text="Refresh" />
-      <Button layoutX="350.0" layoutY="345.0" mnemonicParsing="false" onAction="#clearForMenuTeacher" prefHeight="25.0" prefWidth="56.0" text="Clear" />
+      <TextField fx:id="teacherID" layoutX="150.0" layoutY="100.0" promptText="Teacher ID" />
+      <Button layoutX="175.0" layoutY="150.0" mnemonicParsing="false" onAction="#showStudents" prefHeight="25.0" prefWidth="95.0" text="Show Students" />
+      <ListView fx:id="myListView" layoutX="400.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label layoutX="400.0" layoutY="51.0" prefHeight="25.0" prefWidth="135.0" text="List of Students:">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <TextField fx:id="teacherCourseID" layoutX="150.0" layoutY="200.0" promptText="Course ID" />
+      <Button layoutX="175.0" layoutY="250.0" mnemonicParsing="false" onAction="#refresh" prefHeight="25.0" prefWidth="95.0" text="Refresh" />
+      <Button layoutX="325.0" layoutY="340.0" mnemonicParsing="false" onAction="#clearForMenuTeacher" prefHeight="25.0" prefWidth="56.0" text="Clear" />
    </children>
 </AnchorPane>

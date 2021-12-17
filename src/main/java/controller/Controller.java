@@ -83,6 +83,7 @@ public record Controller(CourseJDBC_Repository courseRepo, StudentJDBC_Repositor
     public void registerWithIDs(int studentID , int courseID) throws IOException {
         this.enrolledRepo.save(studentID , courseID);
     }
+
     /**
      * @return the list of all courses from the database
      */
@@ -95,6 +96,32 @@ public record Controller(CourseJDBC_Repository courseRepo, StudentJDBC_Repositor
      */
     public ArrayList<Student> retrieveStudents() throws IOException {
         return (ArrayList<Student>) studentRepo.findAll();
+    }
+
+    /**
+     * @param id is the id of a student
+     * @return an object of type Student
+     */
+    public boolean findStudentByID(int id) throws IOException{
+        ArrayList<Student> studentList = (ArrayList<Student>) this.studentRepo.findAll();
+        for(Student student: studentList){
+            if (student.getStudentID() == id)
+                return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param id is the id of a teacher
+     * @return an object of type teacher
+     */
+    public boolean findTeacherByID(int id) throws IOException{
+        ArrayList<Teacher> teacherList = (ArrayList<Teacher>) this.teacherRepo.findAll();
+        for(Teacher teacher: teacherList){
+            if (teacher.getTeacherID() == id)
+                return true;
+        }
+        return false;
     }
 
     /**
@@ -208,11 +235,12 @@ public record Controller(CourseJDBC_Repository courseRepo, StudentJDBC_Repositor
 
     /**
      * this method is used to find students who are registered to a certain course
+     * depending on teacher's ID
      * @return a list of students who are enrolled to a course
      */
-    public ArrayList<Student> findStudentsByCourseID(int courseID) throws IOException{
+    public ArrayList<Student> findStudentsByCourseAndTeacherID(int courseID, int teacherID) throws IOException{
         ArrayList<Integer> studentIDs = this.enrolledRepo.findStudentsByCourseID(courseID);
-        ArrayList<Student> studentList = (ArrayList<Student>) this.studentRepo.findAll();
+        ArrayList<Student> studentList = (ArrayList<Student>) this.findStudentsByTeacherID(teacherID);
         ArrayList<Student> finalList = new ArrayList<>();
         for(Student student: studentList){
             if(studentIDs.contains(student.getStudentID())){

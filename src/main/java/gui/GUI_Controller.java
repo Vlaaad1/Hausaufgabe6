@@ -35,50 +35,72 @@ public class GUI_Controller {
     private Label totalCreditsLabel;
 
     @FXML
+    private TextField loginStudentID;
+    @FXML
+    private Label invalidLabelStudent;
+
+    @FXML
+    private TextField loginTeacherID;
+    @FXML
+    private Label invalidLabelTeacher;
+
+    @FXML
     private ListView<String> myListView;
 
     @FXML
-    private TextField studentFirstName;
-    @FXML
-    private TextField studentLastName;
-    @FXML
     private TextField studentID;
     @FXML
-    private TextField studentTotalCredits;
-    @FXML
     private TextField studentCourseID;
-    @FXML
-    private TextField teacherFirstName;
-    @FXML
-    private TextField teacherLastName;
+
     @FXML
     private TextField teacherID;
     @FXML
     private TextField teacherCourseID;
+
+
+    /**
+     *This function is used to open the login window for student
+     */
+    @FXML
+    protected void openStudentLogin() throws IOException {
+        GUI_Application.openMenu("studentLogin.fxml", "Student Login");
+    }
 
     /**
      *This function is used to open the menu for student
      */
     @FXML
     protected void onStudentMenuButtonClick() throws IOException {
-        GUI_Application.openMenu("studentMenu.fxml", "Student Menu");
+        int id = Integer.parseInt(loginStudentID.getText());
+        if(controller.findStudentByID(id)){
+            GUI_Application.openMenu("studentMenu.fxml", "Student Menu");
+        }
+        else {
+            invalidLabelStudent.setText("Invalid ID. Please try again.");
+        }
     }
 
     /**
-     *This function is used to open the menu for teacher
+     *This function is used to open the login window for student
+     */
+    @FXML
+    protected void openTeacherLogin() throws IOException {
+        GUI_Application.openMenu("teacherLogin.fxml", "Teacher Login");
+    }
+
+    /**
+     * This function is used to open the menu for teacher if the id is valid
+     * or set a default message for an invalid value
      */
     @FXML
     protected void onTeacherMenuButtonClick() throws IOException {
-        GUI_Application.openMenu("teacherMenu.fxml", "Teacher Menu");
-    }
-
-    /**
-     *This function is used to save a student in the database using the gui
-     */
-    @FXML
-    protected void saveForMenuStudent() throws IOException {
-        controller.addStudent(studentFirstName.getText(), studentLastName.getText(),
-                Integer.parseInt(studentID.getText()), Integer.parseInt(studentTotalCredits.getText()));
+        int id = Integer.parseInt(loginTeacherID.getText());
+        if(controller.findTeacherByID(id)){
+            GUI_Application.openMenu("teacherMenu.fxml", "Teacher Menu");
+        }
+        else {
+            invalidLabelTeacher.setText("Invalid ID. Please try again.");
+        }
     }
 
     /**
@@ -110,22 +132,14 @@ public class GUI_Controller {
     }
 
     /**
-     *This function is used to save a teacher in the database using the gui
-     */
-    @FXML
-    protected void saveForMenuTeacher() throws IOException {
-        controller.addTeacher(teacherFirstName.getText(), teacherLastName.getText(),
-                Integer.parseInt(teacherID.getText()));
-    }
-
-    /**
-     * This function is used to display the students who are registered to a teacher's course
-     * depending on teacher's ID
+     * This function is used to display the students who are registered to all of
+     * teacher's courses depending on teacher's ID
      */
     @FXML
     public void showStudents() throws IOException {
         if(teacherID.getText() != null) {
-            ArrayList<Student> students = this.controller.findStudentsByTeacherID(Integer.parseInt(teacherID.getText()));
+            ArrayList<Student> students = this.controller.findStudentsByTeacherID(
+                    Integer.parseInt(teacherID.getText()));
             List<String> strings = students.stream().map(Student::toString).collect(Collectors.toList());
             myListView.getItems().addAll(strings);
             myListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -135,13 +149,15 @@ public class GUI_Controller {
 
     /**
      * This function is used to display the students who are registered to course depending on
-     * course's ID, clearing the previous list and updating all tables from the database
+     * course's ID and teacher's ID, clearing the previous list and updating all tables
+     * from the database
      */
     @FXML
     public void refresh() throws IOException{
         if(teacherCourseID.getText() != null && teacherID.getText() != null){
             myListView.getItems().clear();
-            ArrayList<Student> students = this.controller.findStudentsByCourseID(Integer.parseInt(teacherCourseID.getText()));
+            ArrayList<Student> students = this.controller.findStudentsByCourseAndTeacherID(
+                    Integer.parseInt(teacherCourseID.getText()), Integer.parseInt(teacherID.getText()));
             List<String> strings = students.stream().map(Student::toString).collect(Collectors.toList());
             myListView.getItems().addAll(strings);
             myListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -153,10 +169,7 @@ public class GUI_Controller {
      */
     @FXML
     public void clearForMenuStudent(){
-        studentFirstName.clear();
-        studentLastName.clear();
         studentID.clear();
-        studentTotalCredits.clear();
         studentCourseID.clear();
     }
 
@@ -165,10 +178,26 @@ public class GUI_Controller {
      */
     @FXML
     public void clearForMenuTeacher(){
-        teacherFirstName.clear();
-        teacherLastName.clear();
         teacherID.clear();
         teacherCourseID.clear();
         myListView.getItems().clear();
+    }
+
+    /**
+     * Function to clear the text fields in the Student Login Menu
+     */
+    @FXML
+    public void clearIdLogin(){
+        loginStudentID.clear();
+        invalidLabelStudent.setText("");
+    }
+
+    /**
+     * Function to clear the text fields in the Teacher Login Menu
+     */
+    @FXML
+    public void clearTeacherIdLogin(){
+        loginTeacherID.clear();
+        invalidLabelTeacher.setText("");
     }
 }

@@ -15,6 +15,6 @@
          <Font name="Ebrima" size="13.0" />
       </font>
    </Label>
-   <Button defaultButton="true" mnemonicParsing="false" onAction="#onStudentMenuButtonClick" prefHeight="74.0" prefWidth="159.0" text="Student Menu" textAlignment="JUSTIFY" />
-   <Button alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#onTeacherMenuButtonClick" prefHeight="75.0" prefWidth="163.0" text="Teacher Menu" />
+   <Button defaultButton="true" mnemonicParsing="false" onAction="#openStudentLogin" prefHeight="74.0" prefWidth="159.0" text="Student Menu" textAlignment="JUSTIFY" />
+   <Button alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#openTeacherLogin" prefHeight="75.0" prefWidth="163.0" text="Teacher Menu" />
 </VBox>

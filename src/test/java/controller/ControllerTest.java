@@ -60,6 +60,7 @@ class ControllerTest {
         enrolledJDBCRepository.delete(student4.getStudentID(), course1.getCourseID());
         enrolledJDBCRepository.delete(student5.getStudentID(), course2.getCourseID());
         enrolledJDBCRepository.delete(student2.getStudentID(), course2.getCourseID());
+        enrolledJDBCRepository.delete(student3.getStudentID(), course4.getCourseID());
     }
 
     //teste curs
