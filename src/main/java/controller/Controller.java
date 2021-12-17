@@ -240,7 +240,7 @@ public record Controller(CourseJDBC_Repository courseRepo, StudentJDBC_Repositor
      */
     public ArrayList<Student> findStudentsByCourseAndTeacherID(int courseID, int teacherID) throws IOException{
         ArrayList<Integer> studentIDs = this.enrolledRepo.findStudentsByCourseID(courseID);
-        ArrayList<Student> studentList = (ArrayList<Student>) this.findStudentsByTeacherID(teacherID);
+        ArrayList<Student> studentList =  this.findStudentsByTeacherID(teacherID);
         ArrayList<Student> finalList = new ArrayList<>();
         for(Student student: studentList){
             if(studentIDs.contains(student.getStudentID())){

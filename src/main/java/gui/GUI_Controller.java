@@ -51,6 +51,8 @@ public class GUI_Controller {
     private TextField studentID;
     @FXML
     private TextField studentCourseID;
+    @FXML
+    private Label doneLabel;
 
     @FXML
     private TextField teacherID;
@@ -110,6 +112,7 @@ public class GUI_Controller {
     protected void registerForMenuStudent() throws IOException {
         controller.registerWithIDs(Integer.parseInt(studentID.getText()),
                 Integer.parseInt(studentCourseID.getText()));
+        doneLabel.setText("Done!");
     }
 
     /**
@@ -171,6 +174,7 @@ public class GUI_Controller {
     public void clearForMenuStudent(){
         studentID.clear();
         studentCourseID.clear();
+        doneLabel.setText("");
     }
 
     /**
